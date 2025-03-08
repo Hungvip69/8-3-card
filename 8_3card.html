@@ -8,7 +8,7 @@
         body {
             margin: 0;
             font-family: 'Arial', sans-serif;
-            background-color: #ffe6f2;
+            background-color: #fff0f5;
             color: #d63384;
             overflow: hidden;
             height: 100vh;
@@ -22,14 +22,15 @@
             position: relative;
             width: 400px;
             height: 600px;
-            background: linear-gradient(to bottom, #ff85a2, #ffccd5);
-            border-radius: 15px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+            background: linear-gradient(to bottom, #ff69b4, #ffb6c1);
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
             opacity: 0;
             transform: scale(0.5);
             transition: opacity 1s ease, transform 1s ease;
             z-index: 1;
             display: none;
+            border: 5px solid #ff1493;
         }
 
         .flowers {
@@ -43,9 +44,9 @@
         }
 
         .flower {
-            width: 30px;
-            height: 30px;
-            background: url('https://i.imgur.com/5A6d1hf.png') no-repeat center;
+            width: 40px;
+            height: 40px;
+            background: url('https://png.pngtree.com/png-vector/20240109/ourlarge/pngtree-bouquet-of-red-roses-for-valentine-s-day-png-image_11420187.png') no-repeat center;
             background-size: cover;
         }
 
@@ -54,10 +55,10 @@
             bottom: 50px;
             width: 100%;
             text-align: center;
-            font-size: 24px;
+            font-size: 26px;
             font-weight: bold;
             color: white;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7);
             z-index: 2;
         }
 
@@ -66,21 +67,22 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            padding: 10px 20px;
-            background: #ff85a2;
+            padding: 12px 24px;
+            background: #ff69b4;
             color: white;
-            font-size: 18px;
+            font-size: 20px;
             font-weight: bold;
             border: none;
-            border-radius: 5px;
+            border-radius: 10px;
             cursor: pointer;
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
-            transition: background 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            transition: background 0.3s ease, transform 0.2s;
             z-index: 3;
         }
 
         .button:hover {
-            background: #d63384;
+            background: #ff1493;
+            transform: scale(0.05);
         }
 
         .card.show {
@@ -101,12 +103,12 @@
         .heart {
             position: absolute;
             top: -10px;
-            width: 20px;
-            height: 20px;
+            width: 25px;
+            height: 25px;
             background: url('https://i.imgur.com/ntUjtVV.png') no-repeat center;
             background-size: contain;
             animation: fall linear infinite;
-            opacity: 0.8;
+            opacity: 0.9;
         }
 
         @keyframes fall {
@@ -148,7 +150,7 @@
                 heart.classList.add('heart');
                 
                 const xPosition = Math.random() * 100 + '%';
-                const size = Math.random() * 10 + 10;
+                const size = Math.random() * 15 + 10;
                 const duration = Math.random() * 5 + 5;
                 const xOffset = Math.random() * 100 - 50;
                 

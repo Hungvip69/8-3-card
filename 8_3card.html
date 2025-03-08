@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Christmas Greeting Card</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #001f3f;
+            color: white;
+            overflow: hidden;
+            height: 100vh;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card {
+            position: relative;
+            width: 400px;
+            height: 600px;
+            background: linear-gradient(to bottom, #ff4e50, #fc913a);
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            transform: scale(0.5);
+            transition: opacity 1s ease, transform 1s ease;
+            z-index: 1;
+            display: none; /* Ẩn thiệp ban đầu */
+        }
+
+        .lights {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 2;
+        }
+
+        .light {
+            width: 15px;
+            height: 15px;
+            background: red;
+            border-radius: 50%;
+            animation: blink 1.5s infinite;
+        }
+
+        .light:nth-child(2) {
+            background: yellow;
+            animation-delay: 0.5s;
+        }
+
+        .light:nth-child(3) {
+            background: green;
+            animation-delay: 1s;
+        }
+
+        @keyframes blink {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        .message {
+            position: absolute;
+            bottom: 50px;
+            width: 100%;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            z-index: 2;
+        }
+
+        .tree {
+            position: absolute;
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 250px;
+            height: 400px;
+            background: url('https://i.imgur.com/aCK6lU4.png') no-repeat center;
+            background-size: cover;
+            z-index: 1;
+        }
+
+        .gift {
+            position: absolute;
+            bottom: 20px;
+            left: calc(50% - 75px);
+            width: 50px;
+            height: 50px;
+            background: url('https://i.imgur.com/aCK6lU4.png') no-repeat center;
+            background-size: cover;
+            z-index: 2;
+        }
+
+        .gift:nth-child(2) {
+            left: calc(50% + 25px);
+        }
+
+        .button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 10px 20px;
+            background: #fc913a;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+            transition: background 0.3s ease;
+            z-index: 3;
+        }
+
+        .button:hover {
+            background: #ff4e50;
+        }
+
+        /* Lớp phủ đếm ngược */
+        .cover {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: none; /* Ẩn lớp phủ ban đầu */
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            color: white;
+            font-weight: bold;
+            z-index: 10;
+        }
+
+        /* Tuyết */
+        .snowflake {
+            position: absolute;
+            top: -10px;
+            width: 10px;
+            height: 10px;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: fall linear infinite;
+            visibility: hidden;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(0) translateX(0);
+            }
+            100% {
+                transform: translateY(100vh) translateX(var(--x-offset));
+            }
+        }
+
+        /* Hiệu ứng khi thiệp xuất hiện */
+        .card.show {
+            animation: cardAnimation 1.5s forwards; /* Thêm animation mượt mà */
+        }
+
+        @keyframes cardAnimation {
+            0% {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="button" onclick="openCard()">Click here</button>
+
+    <div class="card-container">
+        <div class="card">
+            <!-- Lights -->
+            <div class="lights">
+                <div class="light"></div>
+                <div class="light"></div>
+                <div class="light"></div>
+            </div>
+
+            <!-- Tree -->
+            <div class="tree"></div>
+
+            <!-- Gifts -->
+            <div class="gift"></div>
+            <div class="gift"></div>
+
+            <!-- Message -->
+            <div class="message">Merry Christmas and Happy New Year!</div>
+        </div>
+    </div>
+
+    <!-- Lớp phủ đếm ngược -->
+    <div class="cover" id="countdown">
+        10
+    </div>
+
+    <script>
+        let snowflakes = [];
+        let countdown = 10;
+        let countdownTimer;
+        let cardDisplayed = false;
+
+        function openCard() {
+            // Ẩn nút và hiển thị lớp phủ đếm ngược
+            document.querySelector('.button').style.display = 'none';
+            document.querySelector('.cover').style.display = 'flex';
+
+            // Bắt đầu đếm ngược
+            countdownTimer = setInterval(function() {
+                countdown--;
+                document.getElementById('countdown').innerText = countdown;
+
+                if (countdown <= 0) {
+                    clearInterval(countdownTimer);
+                    document.getElementById('countdown').style.display = 'none';
+                    displayCard();  // Hiển thị thiệp sau khi đếm ngược hoàn tất
+                }
+            }, 1000);
+
+            // Tạo tuyết rơi ngay khi bấm nút
+            createSnowflakes();
+        }
+
+        function displayCard() {
+            if (!cardDisplayed) {
+                // Hiển thị thiệp sau khi đếm ngược
+                document.querySelector('.card').style.display = 'block';
+                document.querySelector('.card').classList.add('show'); // Thêm lớp cho hiệu ứng animation
+                cardDisplayed = true;
+            }
+        }
+
+        function createSnowflakes() {
+            // Xóa tuyết cũ nếu có
+            snowflakes.forEach(snowflake => {
+                document.body.removeChild(snowflake);
+            });
+            snowflakes = [];
+
+            // Tạo tuyết mới
+            const numSnowflakes = 100; // Số lượng tuyết
+            for (let i = 0; i < numSnowflakes; i++) {
+                const snowflake = document.createElement('div');
+                snowflake.classList.add('snowflake');
+
+                // Cập nhật các thuộc tính CSS cho tuyết
+                const xPosition = Math.random() * 100 + '%'; // Vị trí ngẫu nhiên trên trục X
+                const size = Math.random() * 5 + 5; // Kích thước ngẫu nhiên
+                const duration = Math.random() * 5 + 5; // Thời gian rơi ngẫu nhiên
+                const xOffset = Math.random() * 100 - 50; // Độ lệch ngẫu nhiên trên trục X khi rơi
+
+                snowflake.style.left = xPosition;
+                snowflake.style.width = `${size}px`;
+                snowflake.style.height = `${size}px`;
+                snowflake.style.animationDuration = `${duration}s`;
+                snowflake.style.setProperty('--x-offset', `${xOffset}px`);
+
+                // Thêm tuyết vào body
+                document.body.appendChild(snowflake);
+                snowflakes.push(snowflake);
+            }
+
+            // Sau khi thiệp được mở, delay 10 giây rồi làm cho tuyết rơi
+            setTimeout(() => {
+                snowflakes.forEach(snowflake => snowflake.style.visibility = 'visible');
+            }, 10000); // Tuyết rơi mượt mà sau 10 giây
+        }
+    </script>
+</body>
+</html>

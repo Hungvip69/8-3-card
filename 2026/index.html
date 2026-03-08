@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Thiệp chúc mừng 8/3 với nhạc nền và hiệu ứng mềm mại.">
+  <title>8/3 Floral Card</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="scene" aria-hidden="true">
+    <div class="scene__grain"></div>
+    <div class="scene__halo scene__halo--a"></div>
+    <div class="scene__halo scene__halo--b"></div>
+    <img class="scene__flowers" src="assets/floral-bg.svg" alt="">
+    <span class="petal petal--1"></span>
+    <span class="petal petal--2"></span>
+    <span class="petal petal--3"></span>
+    <span class="petal petal--4"></span>
+  </div>
+
+  <main class="card-shell">
+    <article class="card" aria-label="International Women's Day Card">
+      <header class="card__top">
+        <div class="lang-switch" role="group" aria-label="Language Switch">
+          <button class="lang-btn" data-lang="vi" type="button">VI</button>
+          <button class="lang-btn" data-lang="en" type="button">EN</button>
+        </div>
+        <button id="musicToggle" class="music-btn" type="button" aria-pressed="false">
+          <span class="music-btn__icon" aria-hidden="true">&#9835;</span>
+          <span class="music-btn__label" data-i18n="musicOff">Bật nhạc</span>
+        </button>
+      </header>
+
+      <p class="eyebrow" data-i18n="eyebrow">Ngày Quốc tế Phụ nữ</p>
+      <h1 class="title" data-i18n="title">Chúc mừng 8/3 thật rạng rỡ</h1>
+      <p class="subtitle" data-i18n="subtitle">Gửi đến những người phụ nữ tuyệt vời một lời chúc ngọt ngào và chân thành.</p>
+
+      <section class="message" aria-label="Greeting message">
+        <p data-i18n="line1">
+          Chúc một nửa thế giới luôn rạng rỡ, hạnh phúc và được yêu thương đúng với giá trị tuyệt vời của mình.
+        </p>
+        <p data-i18n="line2">
+          Cảm ơn bạn đã mang đến sự ấm áp, kiên cường và vẻ đẹp rất riêng cho cuộc đời này.
+        </p>
+      </section>
+
+      <p class="signature" data-i18n="signature">Yêu thương và trân trọng.</p>
+    </article>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+  <script src="main.js" defer></script>
+</body>
+</html>

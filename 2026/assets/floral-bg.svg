@@ -1,0 +1,47 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="stem" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#9CC8A8" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#71A284" stop-opacity="0.7"/>
+    </linearGradient>
+    <radialGradient id="petalPink" cx="0.35" cy="0.3" r="0.9">
+      <stop offset="0" stop-color="#FFE6EE"/>
+      <stop offset="0.58" stop-color="#F5A7C2"/>
+      <stop offset="1" stop-color="#E07BA4"/>
+    </radialGradient>
+    <radialGradient id="petalCoral" cx="0.4" cy="0.35" r="0.85">
+      <stop offset="0" stop-color="#FFE7DA"/>
+      <stop offset="0.58" stop-color="#F7B79A"/>
+      <stop offset="1" stop-color="#E8898F"/>
+    </radialGradient>
+  </defs>
+
+  <g opacity="0.7">
+    <path d="M1040 900C1040 690 1018 548 978 414C945 306 894 222 818 130" stroke="url(#stem)" stroke-width="16" stroke-linecap="round"/>
+    <path d="M970 900C970 740 955 642 924 542C892 438 836 360 760 282" stroke="url(#stem)" stroke-width="11" stroke-linecap="round"/>
+    <path d="M1120 900C1117 760 1099 677 1073 607C1042 522 993 469 932 430" stroke="url(#stem)" stroke-width="10" stroke-linecap="round"/>
+  </g>
+
+  <g opacity="0.92">
+    <ellipse cx="816" cy="138" rx="92" ry="70" fill="url(#petalPink)" transform="rotate(15 816 138)"/>
+    <ellipse cx="760" cy="208" rx="92" ry="70" fill="url(#petalCoral)" transform="rotate(-28 760 208)"/>
+    <ellipse cx="876" cy="210" rx="92" ry="70" fill="url(#petalPink)" transform="rotate(38 876 210)"/>
+    <ellipse cx="820" cy="244" rx="78" ry="58" fill="#FFE9EF" fill-opacity="0.8"/>
+    <circle cx="820" cy="206" r="22" fill="#E789A8"/>
+  </g>
+
+  <g opacity="0.84">
+    <ellipse cx="755" cy="295" rx="70" ry="54" fill="url(#petalCoral)" transform="rotate(12 755 295)"/>
+    <ellipse cx="702" cy="344" rx="70" ry="54" fill="url(#petalPink)" transform="rotate(-24 702 344)"/>
+    <ellipse cx="807" cy="352" rx="70" ry="54" fill="url(#petalCoral)" transform="rotate(28 807 352)"/>
+    <ellipse cx="754" cy="378" rx="58" ry="43" fill="#FFE8DC" fill-opacity="0.78"/>
+    <circle cx="755" cy="348" r="16" fill="#E7968E"/>
+  </g>
+
+  <g opacity="0.76">
+    <ellipse cx="934" cy="438" rx="54" ry="43" fill="url(#petalPink)" transform="rotate(18 934 438)"/>
+    <ellipse cx="892" cy="476" rx="54" ry="43" fill="url(#petalCoral)" transform="rotate(-20 892 476)"/>
+    <ellipse cx="972" cy="484" rx="54" ry="43" fill="url(#petalPink)" transform="rotate(30 972 484)"/>
+    <circle cx="934" cy="470" r="12" fill="#DD749E"/>
+  </g>
+</svg>

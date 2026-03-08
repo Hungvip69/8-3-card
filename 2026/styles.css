@@ -261,6 +261,13 @@ body {
   color: #703f67;
 }
 
+.credit {
+  margin: 10px 0 0;
+  font-size: 0.75rem;
+  color: rgba(56, 47, 57, 0.58);
+  letter-spacing: 0.03em;
+}
+
 @media (max-width: 680px) {
   .scene__flowers {
     width: min(108vw, 560px);
